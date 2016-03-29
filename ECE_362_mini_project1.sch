@@ -6964,6 +6964,10 @@ Source: AVX .. aphvc.pdf</description>
 <part name="JP3" library="pinhead" deviceset="PINHD-1X8" device=""/>
 <part name="JP4" library="pinhead" deviceset="PINHD-1X8" device=""/>
 <part name="JP5" library="pinhead" deviceset="PINHD-1X8" device=""/>
+<part name="R3" library="resistor" deviceset="R-US_" device="R0603"/>
+<part name="R4" library="resistor" deviceset="R-US_" device="R0603"/>
+<part name="P+8" library="supply1" deviceset="+5V" device=""/>
+<part name="P+9" library="supply1" deviceset="+5V" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -7004,6 +7008,10 @@ Source: AVX .. aphvc.pdf</description>
 <instance part="JP3" gate="A" x="256.54" y="172.72"/>
 <instance part="JP4" gate="A" x="256.54" y="124.46"/>
 <instance part="JP5" gate="A" x="256.54" y="71.12"/>
+<instance part="R3" gate="G$1" x="142.24" y="149.86" rot="R90"/>
+<instance part="R4" gate="G$1" x="149.86" y="149.86" rot="R90"/>
+<instance part="P+8" gate="1" x="142.24" y="160.02"/>
+<instance part="P+9" gate="1" x="149.86" y="160.02"/>
 </instances>
 <busses>
 </busses>
@@ -7331,6 +7339,16 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="137.16" y1="193.04" x2="137.16" y2="198.12" width="0.1524" layer="91"/>
 <junction x="137.16" y="193.04"/>
 </segment>
+<segment>
+<pinref part="P+8" gate="1" pin="+5V"/>
+<pinref part="R3" gate="G$1" pin="2"/>
+<wire x1="142.24" y1="157.48" x2="142.24" y2="154.94" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="P+9" gate="1" pin="+5V"/>
+<pinref part="R4" gate="G$1" pin="2"/>
+<wire x1="149.86" y1="157.48" x2="149.86" y2="154.94" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="PE0" class="0">
 <segment>
@@ -7340,8 +7358,10 @@ Source: AVX .. aphvc.pdf</description>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="PE0/XIRQ"/>
-<wire x1="114.3" y1="139.7" x2="127" y2="139.7" width="0.1524" layer="91"/>
 <label x="116.84" y="139.7" size="1.778" layer="95"/>
+<pinref part="R3" gate="G$1" pin="1"/>
+<wire x1="114.3" y1="139.7" x2="142.24" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="139.7" x2="142.24" y2="144.78" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PE1" class="0">
@@ -7352,8 +7372,10 @@ Source: AVX .. aphvc.pdf</description>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="PE1/IRQ"/>
-<wire x1="114.3" y1="134.62" x2="127" y2="134.62" width="0.1524" layer="91"/>
 <label x="116.84" y="134.62" size="1.778" layer="95"/>
+<pinref part="R4" gate="G$1" pin="1"/>
+<wire x1="114.3" y1="134.62" x2="149.86" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="134.62" x2="149.86" y2="144.78" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PT7" class="0">
@@ -7515,15 +7537,6 @@ Source: AVX .. aphvc.pdf</description>
 <pinref part="C1" gate="G$1" pin="2"/>
 <wire x1="93.98" y1="190.5" x2="93.98" y2="193.04" width="0.1524" layer="91"/>
 <junction x="93.98" y="193.04"/>
-</segment>
-</net>
-<net name="N$5" class="0">
-<segment>
-<pinref part="U$4" gate="G$1" pin="Q7S"/>
-<wire x1="208.28" y1="104.14" x2="218.44" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="218.44" y1="104.14" x2="218.44" y2="86.36" width="0.1524" layer="91"/>
-<pinref part="U$5" gate="G$1" pin="Q0"/>
-<wire x1="218.44" y1="86.36" x2="208.28" y2="86.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="LED1_Q0" class="0">
@@ -7727,12 +7740,25 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="254" y1="81.28" x2="238.76" y2="81.28" width="0.1524" layer="91"/>
 <label x="238.76" y="81.28" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$4" gate="G$1" pin="Q7S"/>
+<wire x1="208.28" y1="104.14" x2="223.52" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="104.14" x2="223.52" y2="86.36" width="0.1524" layer="91"/>
+<pinref part="U$5" gate="G$1" pin="Q0"/>
+<wire x1="223.52" y1="86.36" x2="208.28" y2="86.36" width="0.1524" layer="91"/>
+<label x="210.82" y="86.36" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LCD_Q1" class="0">
 <segment>
 <pinref part="JP5" gate="A" pin="2"/>
 <wire x1="254" y1="78.74" x2="238.76" y2="78.74" width="0.1524" layer="91"/>
 <label x="238.76" y="78.74" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$5" gate="G$1" pin="Q1"/>
+<wire x1="177.8" y1="91.44" x2="167.64" y2="91.44" width="0.1524" layer="91"/>
+<label x="167.64" y="91.44" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LCD_Q2" class="0">
@@ -7741,12 +7767,22 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="254" y1="76.2" x2="238.76" y2="76.2" width="0.1524" layer="91"/>
 <label x="238.76" y="76.2" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$5" gate="G$1" pin="Q2"/>
+<wire x1="177.8" y1="86.36" x2="167.64" y2="86.36" width="0.1524" layer="91"/>
+<label x="167.64" y="86.36" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LCD_Q3" class="0">
 <segment>
 <pinref part="JP5" gate="A" pin="4"/>
 <wire x1="254" y1="73.66" x2="238.76" y2="73.66" width="0.1524" layer="91"/>
 <label x="238.76" y="73.66" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$5" gate="G$1" pin="Q3"/>
+<wire x1="177.8" y1="81.28" x2="167.64" y2="81.28" width="0.1524" layer="91"/>
+<label x="167.64" y="81.28" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LCD_Q4" class="0">
@@ -7755,12 +7791,22 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="254" y1="71.12" x2="238.76" y2="71.12" width="0.1524" layer="91"/>
 <label x="238.76" y="71.12" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$5" gate="G$1" pin="Q4"/>
+<wire x1="177.8" y1="76.2" x2="167.64" y2="76.2" width="0.1524" layer="91"/>
+<label x="167.64" y="76.2" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LCD_Q5" class="0">
 <segment>
 <pinref part="JP5" gate="A" pin="6"/>
 <wire x1="254" y1="68.58" x2="238.76" y2="68.58" width="0.1524" layer="91"/>
 <label x="238.76" y="68.58" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$5" gate="G$1" pin="Q5"/>
+<wire x1="177.8" y1="71.12" x2="167.64" y2="71.12" width="0.1524" layer="91"/>
+<label x="167.64" y="71.12" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LCD_Q6" class="0">
@@ -7769,12 +7815,22 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="254" y1="66.04" x2="238.76" y2="66.04" width="0.1524" layer="91"/>
 <label x="238.76" y="66.04" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$5" gate="G$1" pin="Q6"/>
+<wire x1="177.8" y1="66.04" x2="167.64" y2="66.04" width="0.1524" layer="91"/>
+<label x="167.64" y="66.04" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LCD_Q7" class="0">
 <segment>
 <pinref part="JP5" gate="A" pin="8"/>
 <wire x1="254" y1="63.5" x2="238.76" y2="63.5" width="0.1524" layer="91"/>
 <label x="238.76" y="63.5" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$5" gate="G$1" pin="Q7"/>
+<wire x1="177.8" y1="60.96" x2="167.64" y2="60.96" width="0.1524" layer="91"/>
+<label x="167.64" y="60.96" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
